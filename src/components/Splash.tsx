@@ -30,7 +30,7 @@ export function Splash() {
             <motion.img 
               src="/logo.png" 
               alt="PLDC Logo" 
-              className="w-48 h-auto md:w-64 drop-shadow-2xl"
+              className="w-48 h-auto md:w-64 drop-shadow-2xl brightness-0 invert"
               animate={{ 
                 y: [0, -10, 0],
                 filter: ["drop-shadow(0px 0px 0px rgba(59, 130, 246, 0))", "drop-shadow(0px 0px 20px rgba(59, 130, 246, 0.5))", "drop-shadow(0px 0px 0px rgba(59, 130, 246, 0))"]

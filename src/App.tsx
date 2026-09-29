@@ -15,7 +15,7 @@ function App() {
       <Splash />
       {/* Global Cinematic Background Video */}
       <div className="fixed inset-0 w-full h-full -z-50">
-        <div className="absolute inset-0 bg-black/60 dark:bg-black/80 z-10" />
+        <div className="absolute inset-0 bg-white/85 dark:bg-black/80 z-10 transition-colors duration-500" />
         <video
           autoPlay
           muted

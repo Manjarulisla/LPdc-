@@ -4,7 +4,7 @@ import { Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-white/10 dark:bg-black/60 backdrop-blur-lg pt-24 pb-12 border-t border-slate-200 dark:border-white/10 relative z-10">
+    <footer className="bg-white/60 dark:bg-black/60 backdrop-blur-lg pt-24 pb-12 border-t border-slate-200 dark:border-white/10 relative z-10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           {/* Brand Info */}
@@ -13,7 +13,7 @@ export function Footer() {
               <img 
                 src="/logo.png" 
                 alt="PLDC Logo" 
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto object-contain dark:brightness-0 dark:invert"
               />
             </div>
             <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xs">

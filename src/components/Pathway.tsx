@@ -42,7 +42,7 @@ export function Pathway() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <section id="pathway" className="py-32 bg-slate-50/10 dark:bg-black/40 backdrop-blur-sm relative overflow-hidden">
+    <section id="pathway" className="py-32 bg-white/40 dark:bg-black/40 backdrop-blur-sm relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

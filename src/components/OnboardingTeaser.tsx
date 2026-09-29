@@ -15,7 +15,7 @@ export function OnboardingTeaser() {
   ];
 
   return (
-    <section className="py-32 bg-slate-100/10 dark:bg-black/50 backdrop-blur-md relative">
+    <section className="py-32 bg-white/50 dark:bg-black/50 backdrop-blur-md relative">
       <div className="max-w-5xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -36,7 +36,7 @@ export function OnboardingTeaser() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-2xl mx-auto bg-white/40 dark:bg-black/60 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20 dark:border-white/10 relative overflow-hidden"
+          className="max-w-2xl mx-auto bg-white/70 dark:bg-black/60 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20 dark:border-white/10 relative overflow-hidden"
         >
           {/* Progress Bar */}
           <div className="absolute top-0 left-0 w-full h-1 bg-slate-100 dark:bg-white/5">

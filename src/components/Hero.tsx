@@ -31,17 +31,17 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8 leading-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-slate-900 dark:text-white mb-8 leading-tight"
         >
           Transform Learning into <br className="hidden md:block" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-300">Growth</span>, Growth into <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-200">Capability</span>.
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-500 dark:to-blue-300">Growth</span>, Growth into <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-500 dark:to-yellow-200">Capability</span>.
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10"
+          className="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-2xl mx-auto mb-10"
         >
           PLDC brings together thought-provoking insights, meaningful networks, and practical knowledge to unlock your true potential.
         </motion.p>
@@ -59,8 +59,8 @@ export function Hero() {
             </MagneticButton>
           </div>
           
-          <button className="flex items-center gap-3 text-white font-medium hover:text-brand-accent transition-colors group">
-            <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center group-hover:border-brand-accent group-hover:bg-brand-accent/10 transition-all">
+          <button className="flex items-center gap-3 text-slate-700 dark:text-white font-medium hover:text-brand-accent transition-colors group">
+            <div className="w-12 h-12 rounded-full border border-slate-300 dark:border-white/30 flex items-center justify-center group-hover:border-brand-accent group-hover:bg-brand-accent/10 transition-all">
               <Play className="w-5 h-5 ml-1" />
             </div>
             Explore the Platform
@@ -75,8 +75,8 @@ export function Hero() {
         transition={{ delay: 1.5, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
       >
-        <span className="text-xs text-white/50 uppercase tracking-widest">Scroll</span>
-        <div className="w-px h-12 bg-white/20 relative overflow-hidden">
+        <span className="text-xs text-slate-500 dark:text-white/50 uppercase tracking-widest">Scroll</span>
+        <div className="w-px h-12 bg-slate-300 dark:bg-white/20 relative overflow-hidden">
           <motion.div 
             animate={{ y: [0, 48, 0] }} 
             transition={{ repeat: Infinity, duration: 2, ease: "linear" }}

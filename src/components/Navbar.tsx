@@ -53,7 +53,7 @@ export function Navbar() {
           <motion.img 
             src="/logo.png" 
             alt="PLDC Logo" 
-            className="h-10 w-auto rounded object-contain"
+            className="h-10 w-auto rounded object-contain dark:brightness-0 dark:invert"
             animate={{ 
               y: [0, -5, 0],
             }}

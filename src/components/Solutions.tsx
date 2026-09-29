@@ -28,7 +28,7 @@ const solutions = [
 
 export function Solutions() {
   return (
-    <section id="solutions" className="py-32 bg-white/5 dark:bg-black/60 backdrop-blur-md relative overflow-hidden">
+    <section id="solutions" className="py-32 bg-white/50 dark:bg-black/60 backdrop-blur-md relative overflow-hidden">
       {/* Abstract Background Elements */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-brand-gold/5 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
@@ -60,7 +60,7 @@ export function Solutions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="group relative rounded-3xl overflow-hidden bg-white/10 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 glow-card"
+              className="group relative rounded-3xl overflow-hidden bg-white/60 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 glow-card"
             >
               {/* Image Container with 3D Effect on Hover */}
               <div className="relative h-64 overflow-hidden perspective-1000">
