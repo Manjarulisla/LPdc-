@@ -16,8 +16,8 @@ export function Footer() {
                 className="h-12 w-auto object-contain dark:brightness-0 dark:invert"
               />
             </div>
-            <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xs">
-              Empowering professionals to learn, grow, connect, and contribute on a global scale.
+            <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-sm">
+              PLDC (Professional Learning & Development Center) is a learning and development platform for individuals who aspire to grow beyond conventional boundaries—personally, professionally, and socially.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full border border-slate-200 dark:border-white/20 flex items-center justify-center hover:bg-brand-accent hover:text-white hover:border-brand-accent transition-all">

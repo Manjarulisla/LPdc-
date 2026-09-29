@@ -31,19 +31,20 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-slate-900 dark:text-white mb-8 leading-tight"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white mb-8 leading-tight"
         >
-          Transform Learning into <br className="hidden md:block" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-500 dark:to-blue-300">Growth</span>, Growth into <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-500 dark:to-yellow-200">Capability</span>.
+          Transform Learning into <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-500 dark:to-blue-300">Growth</span>, <br className="hidden md:block" />
+          Growth into <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-500 dark:to-yellow-200">Capability</span>, <br className="hidden md:block" />
+          Capability into <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-400">Impact</span>.
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-2xl mx-auto mb-10"
+          className="text-base md:text-lg text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-10"
         >
-          PLDC brings together thought-provoking insights, meaningful networks, and practical knowledge to unlock your true potential.
+          <strong>PLDC (Professional Learning & Development Center)</strong> is a platform for individuals who aspire to grow beyond conventional boundaries—personally, professionally, and socially. We bring together thought-provoking insights, meaningful networks, practical knowledge, and proven actionable solutions to help you unlock your potential, advance your career, and create positive impact in society.
         </motion.p>
 
         <motion.div
