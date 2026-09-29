@@ -34,6 +34,7 @@ export function MagneticButton({ children, className, variant = 'primary', ...pr
   };
 
   return (
+    // @ts-ignore
     <motion.button
       ref={buttonRef}
       onMouseMove={handleMouseMove}
