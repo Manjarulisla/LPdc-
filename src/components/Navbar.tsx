@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, Globe } from 'lucide-react';
 import { MagneticButton } from './MagneticButton';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export function Navbar() {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
     // Initial theme setup
@@ -27,10 +29,10 @@ export function Navbar() {
   };
 
   const navLinks = [
-    { name: 'Pathway', href: '#pathway' },
-    { name: 'Solutions', href: '#solutions' },
-    { name: 'Community', href: '#community' },
-    { name: 'Impact', href: '#impact' },
+    { name: t('nav.pathway'), href: '#pathway' },
+    { name: t('nav.solutions'), href: '#solutions' },
+    { name: t('nav.community'), href: '#community' },
+    { name: t('nav.impact'), href: '#impact' },
   ];
 
   return (
@@ -53,7 +55,7 @@ export function Navbar() {
           <motion.img 
             src="/logo.png" 
             alt="PLDC Logo" 
-            className="h-10 w-auto rounded object-contain dark:brightness-0 dark:invert"
+            className="h-16 w-auto rounded object-contain dark:brightness-0 dark:invert"
             animate={{ 
               y: [0, -5, 0],
             }}
@@ -81,17 +83,32 @@ export function Navbar() {
         {/* Right Actions */}
         <div className="hidden md:flex items-center gap-4">
           <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-sm font-medium"
+            title="Switch Language"
+          >
+            <Globe className="w-4 h-4" />
+            <span className="uppercase">{language}</span>
+          </button>
+          <button
             onClick={toggleTheme}
             className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             aria-label="Toggle theme"
           >
             {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
-          <MagneticButton>Join the Network</MagneticButton>
+          <MagneticButton>{t('nav.join')}</MagneticButton>
         </div>
 
         {/* Mobile Menu Toggle */}
         <div className="md:hidden flex items-center gap-4">
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-1 p-2 rounded-full text-sm font-medium uppercase"
+          >
+            <Globe className="w-4 h-4" />
+            {language}
+          </button>
           <button onClick={toggleTheme} className="p-2">
             {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
@@ -108,7 +125,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-white/10"
+            className="md:hidden glass border-t border-slate-200/50 dark:border-white/10"
           >
             <div className="flex flex-col p-6 gap-4">
               {navLinks.map((link) => (
@@ -121,7 +138,7 @@ export function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <MagneticButton className="w-full mt-4">Join the Network</MagneticButton>
+              <MagneticButton className="w-full mt-4">{t('nav.join')}</MagneticButton>
             </div>
           </motion.div>
         )}
