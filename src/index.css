@@ -7,7 +7,7 @@
 }
 
 html.lang-bn {
-  --font-sans: 'Hind Siliguri', sans-serif;
+  --font-sans: 'Noto Serif Bengali', serif;
 }
 
 @layer base {
