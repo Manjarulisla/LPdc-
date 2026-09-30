@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-sans: 'Inter', sans-serif;
+}
+
+html.lang-bn {
+  --font-sans: 'Hind Siliguri', sans-serif;
+}
+
 @layer base {
   body {
     @apply bg-white dark:bg-[#0f172a] text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden;

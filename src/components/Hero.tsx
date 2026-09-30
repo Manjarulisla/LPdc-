@@ -31,13 +31,13 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white mb-8 leading-tight"
+          className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white mb-8 leading-[1.3]"
         >
-          {t('hero.h1_1')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-500 dark:to-blue-300">{t('hero.h1_growth')}</span>
-          {t('hero.h1_2').includes('\n') && <br className="hidden md:block" />}
-          {t('hero.h1_2').replace('\n', '')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-500 dark:to-yellow-200">{t('hero.h1_capability')}</span>
-          {t('hero.h1_3').includes('\n') && <br className="hidden md:block" />}
-          {t('hero.h1_3').replace('\n', '')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-400">{t('hero.h1_impact')}</span>{t('hero.h1_4')}
+          {t('hero.h1_1')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-500 dark:to-blue-300">{t('hero.h1_growth')}</span>{t('hero.h1_2')}
+          <br className="hidden md:block" />
+          {t('hero.h1_precap')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-500 dark:to-yellow-200">{t('hero.h1_capability')}</span>{t('hero.h1_3')}
+          <br className="hidden md:block" />
+          {t('hero.h1_preimp')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-400">{t('hero.h1_impact')}</span>{t('hero.h1_4')}
         </motion.h1>
 
         <motion.p

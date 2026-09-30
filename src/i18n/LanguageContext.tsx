@@ -21,9 +21,11 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.tag': 'Learn. Grow. Connect. Contribute.',
     'hero.h1_1': 'Transform Learning into ',
     'hero.h1_growth': 'Growth',
-    'hero.h1_2': ',\nGrowth into ',
+    'hero.h1_2': ',',
+    'hero.h1_precap': 'Growth into ',
     'hero.h1_capability': 'Capability',
-    'hero.h1_3': ',\nCapability into ',
+    'hero.h1_3': ',',
+    'hero.h1_preimp': 'Capability into ',
     'hero.h1_impact': 'Impact',
     'hero.h1_4': '.',
     'hero.desc': '<strong>PLDC (Professional Learning & Development Center)</strong> is a platform for individuals who aspire to grow beyond conventional boundaries—personally, professionally, and socially. We bring together thought-provoking insights, meaningful networks, practical knowledge, and proven actionable solutions to help you unlock your potential, advance your career, and create positive impact in society.',
@@ -109,9 +111,11 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.tag': 'শিখুন। বেড়ে উঠুন। যুক্ত হোন। অবদান রাখুন।',
     'hero.h1_1': 'শেখার মাধ্যমকে ',
     'hero.h1_growth': 'প্রবৃদ্ধিতে',
-    'hero.h1_2': ',\nপ্রবৃদ্ধিকে ',
+    'hero.h1_2': ',',
+    'hero.h1_precap': 'প্রবৃদ্ধিকে ',
     'hero.h1_capability': 'দক্ষতায়',
-    'hero.h1_3': ',\nএবং দক্ষতাকে ',
+    'hero.h1_3': ',',
+    'hero.h1_preimp': 'এবং দক্ষতাকে ',
     'hero.h1_impact': 'প্রভাবে',
     'hero.h1_4': ' রূপান্তর করুন।',
     'hero.desc': '<strong>PLDC (প্রফেশনাল লার্নিং অ্যান্ড ডেভেলপমেন্ট সেন্টার)</strong> হলো এমন একটি প্ল্যাটফর্ম যা ব্যক্তিগত, পেশাগত এবং সামাজিকভাবে সীমানা ছাড়িয়ে বেড়ে উঠতে চাওয়া মানুষদের জন্য। আমরা চিন্তাশীল অন্তর্দৃষ্টি, অর্থবহ নেটওয়ার্ক, ব্যবহারিক জ্ঞান এবং কার্যকর সমাধান নিয়ে আসি, যা আপনার সম্ভাবনাকে উন্মোচন করতে, ক্যারিয়ারে এগোতে এবং সমাজে ইতিবাচক প্রভাব ফেলতে সাহায্য করে।',
@@ -193,7 +197,15 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>('en');
 
   const toggleLanguage = () => {
-    setLanguage(prev => (prev === 'en' ? 'bn' : 'en'));
+    setLanguage(prev => {
+      const newLang = prev === 'en' ? 'bn' : 'en';
+      if (newLang === 'bn') {
+        document.documentElement.classList.add('lang-bn');
+      } else {
+        document.documentElement.classList.remove('lang-bn');
+      }
+      return newLang;
+    });
   };
 
   const t = (key: string): string => {
