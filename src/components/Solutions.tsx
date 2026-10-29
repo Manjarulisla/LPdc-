@@ -1,98 +1,111 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { TiltCard } from './fx/TiltCard';
+import { Reveal, RevealText } from './fx/Reveal';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const solutions = [
   {
     id: 1,
-    title: 'Executive Leadership',
-    description: 'Master the art of decision-making, strategic thinking, and guiding teams to success in high-pressure environments.',
+    key: 's1',
     image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2874&auto=format&fit=crop',
-    tags: ['Leadership', 'Strategy']
+    tags: ['Leadership', 'Strategy'],
+    accent: 'from-brand-accent to-sky-400',
   },
   {
     id: 2,
-    title: 'Social Impact Mastery',
-    description: 'Learn how to build sustainable initiatives that create measurable positive change in local and global communities.',
+    key: 's2',
     image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2940&auto=format&fit=crop',
-    tags: ['Sustainability', 'Impact']
+    tags: ['Sustainability', 'Impact'],
+    accent: 'from-emerald-500 to-green-300',
   },
   {
     id: 3,
-    title: 'Global Networking',
-    description: 'Develop the skills to build, maintain, and leverage a high-value professional network across continents.',
+    key: 's3',
     image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=2940&auto=format&fit=crop',
-    tags: ['Networking', 'Communication']
-  }
+    tags: ['Networking', 'Communication'],
+    accent: 'from-brand-gold to-amber-300',
+  },
 ];
 
 export function Solutions() {
+  const { t } = useLanguage();
+
   return (
     <section id="solutions" className="py-32 bg-white/50 dark:bg-black/60 backdrop-blur-md relative overflow-hidden">
       {/* Abstract Background Elements */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-brand-gold/5 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-brand-accent/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-aurora" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-brand-gold/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 animate-aurora-slow" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
-        >
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Solutions</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl">
-              Curated programs and masterclasses designed to elevate every aspect of your professional journey.
-            </p>
+            <RevealText as="h2" text={t('solutions.title')} className="text-4xl md:text-5xl font-bold mb-4" />
+            <Reveal delay={0.15}>
+              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl">{t('solutions.desc')}</p>
+            </Reveal>
           </div>
-          <button className="text-brand-accent font-medium flex items-center gap-2 hover:gap-4 transition-all pb-2">
-            View All Programs <ArrowUpRight className="w-5 h-5" />
-          </button>
-        </motion.div>
+          <Reveal from="right" delay={0.3}>
+            <button className="text-brand-accent font-medium flex items-center gap-2 hover:gap-4 transition-all pb-2 group">
+              {t('solutions.viewAll')}
+              <ArrowUpRight className="w-5 h-5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+            </button>
+          </Reveal>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {solutions.map((solution, index) => (
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-50px' }}
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.15 } } }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 perspective-1000"
+        >
+          {solutions.map((solution) => (
             <motion.div
               key={solution.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="group relative rounded-3xl overflow-hidden bg-white/60 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 glow-card"
+              variants={{
+                hidden: { opacity: 0, y: 70, rotateX: -12, filter: 'blur(8px)' },
+                show: { opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)', transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
+              }}
             >
-              {/* Image Container with 3D Effect on Hover */}
-              <div className="relative h-64 overflow-hidden perspective-1000">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent z-10 transition-colors duration-500" />
-                <img 
-                  src={solution.image} 
-                  alt={solution.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
+              <TiltCard
+                intensity={8}
+                className="group rounded-3xl overflow-hidden bg-white/60 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10 glow-card h-full"
+              >
+                {/* Image Container */}
+                <div className="relative h-64 overflow-hidden">
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent z-10 transition-colors duration-500" />
+                  <div className={`absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent z-10`} />
+                  <img
+                    src={solution.image}
+                    alt={t(`solutions.${solution.key}.title`)}
+                    className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110 group-hover:rotate-1"
+                  />
+                  {/* Accent bar */}
+                  <div className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r ${solution.accent} w-0 group-hover:w-full transition-all duration-700 z-20`} />
+                </div>
 
-              {/* Content */}
-              <div className="p-8 relative z-20 bg-transparent transform transition-transform duration-500">
-                <div className="flex gap-2 mb-4">
-                  {solution.tags.map(tag => (
-                    <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300">
-                      {tag}
-                    </span>
-                  ))}
+                {/* Content */}
+                <div className="p-8 relative z-20" style={{ transform: 'translateZ(30px)' }}>
+                  <div className="flex gap-2 mb-4">
+                    {solution.tags.map((tag) => (
+                      <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-transparent group-hover:border-brand-accent/40 transition-colors">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 group-hover:text-brand-accent transition-colors">{t(`solutions.${solution.key}.title`)}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-6">{t(`solutions.${solution.key}.desc`)}</p>
+
+                  <div className="flex items-center text-brand-accent font-medium opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-300">
+                    {t('solutions.explore')} <ArrowUpRight className="w-5 h-5 ml-2" />
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold mb-3">{solution.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-6">
-                  {solution.description}
-                </p>
-                
-                <div className="flex items-center text-brand-accent font-medium opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-300">
-                  Explore Course <ArrowUpRight className="w-5 h-5 ml-2" />
-                </div>
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

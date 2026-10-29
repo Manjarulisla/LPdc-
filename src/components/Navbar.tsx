@@ -41,7 +41,7 @@ export function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'py-4 glass shadow-lg' : 'py-6 bg-transparent'
+        isScrolled ? 'py-4 glass shadow-lg shadow-brand-accent/5' : 'py-6 bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -50,6 +50,7 @@ export function Navbar() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          whileHover={{ scale: 1.05 }}
           className="flex items-center gap-2 cursor-pointer"
         >
           <motion.img 
@@ -73,7 +74,7 @@ export function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium hover:text-brand-accent transition-colors"
+              className="nav-link text-sm font-medium hover:text-brand-accent transition-colors"
             >
               {link.name}
             </a>
@@ -90,13 +91,26 @@ export function Navbar() {
             <Globe className="w-4 h-4" />
             <span className="uppercase">{language}</span>
           </button>
-          <button
+          <motion.button
+            whileHover={{ rotate: 25, scale: 1.1 }}
+            whileTap={{ scale: 0.9, rotate: -25 }}
             onClick={toggleTheme}
             className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             aria-label="Toggle theme"
           >
-            {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={isDark ? 'sun' : 'moon'}
+                initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
+                transition={{ duration: 0.25 }}
+                className="block"
+              >
+                {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </motion.span>
+            </AnimatePresence>
+          </motion.button>
           <MagneticButton>{t('nav.join')}</MagneticButton>
         </div>
 
@@ -128,15 +142,18 @@ export function Navbar() {
             className="md:hidden glass border-t border-slate-200/50 dark:border-white/10"
           >
             <div className="flex flex-col p-6 gap-4">
-              {navLinks.map((link) => (
-                <a
+              {navLinks.map((link, i) => (
+                <motion.a
                   key={link.name}
                   href={link.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 * i, duration: 0.3 }}
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-lg font-medium py-2"
                 >
                   {link.name}
-                </a>
+                </motion.a>
               ))}
               <MagneticButton className="w-full mt-4">{t('nav.join')}</MagneticButton>
             </div>

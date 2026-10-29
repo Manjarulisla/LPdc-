@@ -1,4 +1,6 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { Reveal } from './fx/Reveal';
 import { MagneticButton } from './MagneticButton';
 import { Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -7,9 +9,13 @@ export function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-white/60 dark:bg-black/60 backdrop-blur-lg pt-24 pb-12 border-t border-slate-200 dark:border-white/10 relative z-10">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+    <footer className="bg-white/60 dark:bg-black/60 backdrop-blur-lg pt-24 pb-12 border-t border-slate-200 dark:border-white/10 relative z-10 overflow-hidden">
+      {/* Animated gradient hairline + ambient glow */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-accent to-transparent text-shimmer" style={{ backgroundSize: '200% auto' }} />
+      <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[80vw] h-80 rounded-full bg-brand-accent/10 dark:bg-brand-accent/15 blur-3xl pointer-events-none animate-aurora" />
+
+      <div className="max-w-7xl mx-auto px-6 relative">
+        <Reveal><div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           {/* Brand Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-6 cursor-pointer">
@@ -23,15 +29,15 @@ export function Footer() {
               {t('footer.desc')}
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full border border-slate-200 dark:border-white/20 flex items-center justify-center hover:bg-brand-accent hover:text-white hover:border-brand-accent transition-all">
+              <motion.a whileHover={{ y: -4, scale: 1.1 }} whileTap={{ scale: 0.9 }} transition={{ type: 'spring', stiffness: 400, damping: 15 }} href="#" className="w-10 h-10 rounded-full border border-slate-200 dark:border-white/20 flex items-center justify-center hover:bg-brand-accent hover:text-white hover:border-brand-accent hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all">
                 <Twitter className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-slate-200 dark:border-white/20 flex items-center justify-center hover:bg-brand-accent hover:text-white hover:border-brand-accent transition-all">
+              </motion.a>
+              <motion.a whileHover={{ y: -4, scale: 1.1 }} whileTap={{ scale: 0.9 }} transition={{ type: 'spring', stiffness: 400, damping: 15 }} href="#" className="w-10 h-10 rounded-full border border-slate-200 dark:border-white/20 flex items-center justify-center hover:bg-brand-accent hover:text-white hover:border-brand-accent hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all">
                 <Linkedin className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-slate-200 dark:border-white/20 flex items-center justify-center hover:bg-brand-accent hover:text-white hover:border-brand-accent transition-all">
+              </motion.a>
+              <motion.a whileHover={{ y: -4, scale: 1.1 }} whileTap={{ scale: 0.9 }} transition={{ type: 'spring', stiffness: 400, damping: 15 }} href="#" className="w-10 h-10 rounded-full border border-slate-200 dark:border-white/20 flex items-center justify-center hover:bg-brand-accent hover:text-white hover:border-brand-accent hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all">
                 <Instagram className="w-4 h-4" />
-              </a>
+              </motion.a>
             </div>
           </div>
 
@@ -66,17 +72,19 @@ export function Footer() {
               <input 
                 type="email" 
                 placeholder={t('footer.emailPlaceholder')} 
-                className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-full px-6 py-3 outline-none focus:border-brand-accent transition-colors"
+                className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-full px-6 py-3 outline-none focus:border-brand-accent focus:shadow-[0_0_0_4px_rgba(59,130,246,0.15)] transition-all"
               />
-              <button 
+              <motion.button
                 type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-brand-accent rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform"
+                whileHover={{ scale: 1.15, rotate: -10 }}
+                whileTap={{ scale: 0.9 }}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-brand-accent rounded-full flex items-center justify-center text-white shadow-[0_0_16px_rgba(59,130,246,0.6)]"
               >
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </motion.button>
             </form>
           </div>
-        </div>
+        </div></Reveal>
 
         <div className="border-t border-slate-200 dark:border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
           <p>{t('footer.rights')}</p>
